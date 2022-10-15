@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { RegisterInfo } from '../../models/register-info.model';
 
 @Component({
   selector: 'app-register-info',
@@ -6,10 +9,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register-info.component.css']
 })
 export class RegisterInfoComponent implements OnInit {
+  formGroup = new FormGroup({
+    username: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
+  })
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+  }
+
+  onSubmitRegisterInfo() {
+    const request: RegisterInfo = {
+      user: this.formGroup.get('username').value,
+      email: this.formGroup.get('email').value,
+      password: this.formGroup.get('password').value,
+    }
   }
 
 }
