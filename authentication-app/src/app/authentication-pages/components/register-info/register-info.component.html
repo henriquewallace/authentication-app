@@ -7,46 +7,46 @@
           style="font-size: 18px; font-weight: 600; padding-bottom: 15px; padding-top: 32px;">{{ 'APP.LOGIN_TITLE' | translate }}</h5>
       <h6 class="card-subtitle mb-2 font-noto text-gray">{{ 'APP.LOGIN_SUBTITLE' | translate }}</h6>
 
-      <div class="input-group flex-nowrap" style="padding-top: 15px;">
-        <span class="input-group-text" id="addon-wrapping">
-          <i class="bi bi-person-fill"></i>
-        </span>
-        <input type="text"
-               class="form-control"
-               formControlName="formGroup.get('username').value"
-               placeholder="{{ 'APP.USERNAME' | translate }}"
-               aria-label="Email"
-               aria-describedby="addon-wrapping">
-      </div>
-
-      <div class="input-group flex-nowrap" style="padding-top: 15px;">
-        <span class="input-group-text" id="addon-wrapping">
-          <i class="bi bi-envelope-fill"></i>
-        </span>
-        <input type="text"
-               class="form-control"
-               formControlName="formGroup.get('email').value"
-               placeholder="{{ 'APP.EMAIL' | translate }}"
-               aria-label="Email"
-               aria-describedby="addon-wrapping">
-      </div>
-
-      <div class="input-group flex-nowrap" style="padding-top: 15px;">
-        <span class="input-group-text" id="addon-wrapping">
-          <i class="bi bi-lock-fill"></i>
-        </span>
-        <input type="text"
-               class="form-control"
-               formControlName="formGroup.get('password').value"
-               placeholder="{{ 'APP.PASSWORD' | translate }}"
-               aria-label="Email"
-               aria-describedby="addon-wrapping">
-      </div>
-      <div class="d-grid" style="margin-top: 23px; margin-bottom: 32px;">
-        <button type="button"
-                class="btn btn-primary"
-                (click)="onSubmitRegisterInfo()">{{ 'APP.START_CHATTING' | translate }}</button>
-      </div>
+      <form [formGroup]="formGroup">
+        <div class="input-group flex-nowrap" style="padding-top: 15px;">
+          <span class="input-group-text" id="addon-wrapping">
+            <i class="bi bi-person-fill"></i>
+          </span>
+          <input type="text"
+                 class="form-control"
+                 formControlName="username"
+                 placeholder="{{ 'APP.USERNAME' | translate }}"
+                 aria-label="Email"
+                 aria-describedby="addon-wrapping">
+        </div>
+        <div class="input-group flex-nowrap" style="padding-top: 15px;">
+          <span class="input-group-text" id="addon-wrapping">
+            <i class="bi bi-envelope-fill"></i>
+          </span>
+          <input type="text"
+                 class="form-control"
+                 formControlName="email"
+                 placeholder="{{ 'APP.EMAIL' | translate }}"
+                 aria-label="Email"
+                 aria-describedby="addon-wrapping">
+        </div>
+        <div class="input-group flex-nowrap" style="padding-top: 15px;">
+          <span class="input-group-text" id="addon-wrapping">
+            <i class="bi bi-lock-fill"></i>
+          </span>
+          <input type="text"
+                 class="form-control"
+                 formControlName="password"
+                 placeholder="{{ 'APP.PASSWORD' | translate }}"
+                 aria-label="Email"
+                 aria-describedby="addon-wrapping">
+        </div>
+        <div class="d-grid" style="margin-top: 23px; margin-bottom: 32px;">
+          <button type="button"
+                  class="btn btn-primary"
+                  (click)="onSubmitRegisterInfo()">{{ 'APP.START_CHATTING' | translate }}</button>
+        </div>
+      </form>
       <div class="d-flex justify-content-center">
         <p class="font-noto text-light-gray" style="font-size: 14px; padding-bottom: 5px;">{{ 'APP.CONTINUE_WITH' | translate }}</p>
       </div>
