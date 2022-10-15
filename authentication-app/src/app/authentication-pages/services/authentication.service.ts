@@ -5,11 +5,8 @@ import { Observable } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Access-Control-Allow-Credentials': 'true',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-    'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
-    'Bypass-Tunnel-Reminder': 'test',
+    'Content-Type':  'application/json',
+    'Bypass-Tunnel-Reminder': 'true',
   })
 };
 
@@ -22,6 +19,6 @@ export class AuthenticationService {
 
   createUser(request: RegisterInfo) {
     const body = JSON.stringify(request);
-    return this.http.post<RegisterInfo>('https://chatty-knives-wash-179-197-35-135.loca.lt/users', body)
+    return this.http.post<RegisterInfo>('https://angry-lies-cry-179-197-35-135.loca.lt/users', body, httpOptions)
   }
 }
