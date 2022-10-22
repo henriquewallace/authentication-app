@@ -1,6 +1,7 @@
-import { Action, createReducer } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
 
 import { RegisterInfo } from './../models/register-info.model';
+import * as fromAuthenticationActions from '../state/authentication.actions';
 
 
 export interface AppState {
@@ -17,6 +18,16 @@ export const initialState: AppState = {
 
 const appStateReducer = createReducer(
   initialState,
+  on(fromAuthenticationActions.doRegister, (state) => ({
+    ...state,
+  })),
+  on(fromAuthenticationActions.doRegisterSuccess, (state, { registerInfo }) => ({
+    ...state,
+    registerInfo: registerInfo,
+  })),
+  on(fromAuthenticationActions.doRegisterFailure, (state) => ({
+    ...state,
+  })),
 );
 
 export function reducer(state: AppState | undefined, action: Action): AppState {
