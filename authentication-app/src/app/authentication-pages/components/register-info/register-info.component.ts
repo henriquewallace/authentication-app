@@ -1,9 +1,13 @@
+import { AppState } from './../../state/authentication.reducer';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
+import { Store } from '@ngrx/store';
+
 import { RegisterInfo } from '../../models/register-info.model';
 import { AuthenticationService } from '../../services/authentication.service';
+import * as fromAuthenticationActions from '../../state/authentication.actions';
 
 @Component({
   selector: 'app-register-info',
@@ -17,7 +21,8 @@ export class RegisterInfoComponent implements OnInit {
     password: new FormControl(''),
   })
 
-  constructor(private authenticationService: AuthenticationService) { }
+  constructor(private store: Store<AppState>,
+              private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
   }
@@ -28,14 +33,14 @@ export class RegisterInfoComponent implements OnInit {
       username: this.formGroup.get('username').value,
       password: this.formGroup.get('password').value,
     }
-    console.log(request)
 
-    this.authenticationService.createUser(request)
-      .subscribe({
-        next: (data) => console.log(data),
-        error: (error) => console.error(error),
-        complete: () => console.info('complete')
-      });
+    this.store.dispatch(fromAuthenticationActions.doRegister(request));
+    // this.authenticationService.createUser(request)
+    //   .subscribe({
+    //     next: (data) => console.log(data),
+    //     error: (error) => console.error(error),
+    //     complete: () => console.info('complete')
+    //   });
   }
 
 }
