@@ -1,4 +1,5 @@
 import { Action, createReducer } from '@ngrx/store';
+
 import { RegisterInfo } from './../models/register-info.model';
 
 
